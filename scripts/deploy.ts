@@ -19,7 +19,7 @@ async function deploy() {
   const contract: MyRoubbler = await MyERC721.connect(deployer).deploy(
     deployer.address, // owner
     "Roubbler", // name
-    "III", // symbol
+    "Roub", // symbol
     "https://example-base-uri.com/", // baseURI
     "https://example-contract-uri.com/" // contractURI
   );

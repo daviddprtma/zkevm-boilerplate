@@ -9,7 +9,8 @@ contract MyRoubbler is ImmutableERC721Preset {
     // 1000000000000000 wei
     uint256 constant MINT_PRICE = 0.001 ether;
     uint256 constant VIP_PRICE = 0.01 ether;
-    uint256 counter;
+    // for remix dev rand
+    // uint256 counter;
     address private _owner;
 
     constructor(
@@ -20,7 +21,7 @@ contract MyRoubbler is ImmutableERC721Preset {
         string memory contractURI
     ) ImmutableERC721Preset(owner, name, symbol, baseURI, contractURI) {
         _owner = owner;
-        counter = 0;
+        // counter = 0;
     }
 
     // Mint takes 0.001 Eth and mints a strength 1 roubbler to the account
@@ -85,9 +86,14 @@ contract MyRoubbler is ImmutableERC721Preset {
         grow(tokenId, 1);
     }
 
+    function randomNumber() internal view returns (uint) {
+        return uint(blockhash(block.number - 1));
+    }   
+    
     // Randomness provided by this is predicatable. Use with care!
-    function randomNumber() public returns (uint) {
-        counter ++;
-        return uint(keccak256(abi.encodePacked(counter)));
-    }
+    // Remix dev
+    // function randomNumber() public returns (uint) {
+    //     counter ++;
+    //     return uint(keccak256(abi.encodePacked(counter)));
+    // }
 }
