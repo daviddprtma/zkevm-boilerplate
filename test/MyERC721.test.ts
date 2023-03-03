@@ -46,7 +46,7 @@ describe('MyERC721', function () {
     expect(await contract.ownerOf(5)).to.equal(recipient.address);
   });
 
-  it('Crafts tokens', async function () {
+  it('Allows owners of tokens to craft new tokens from tokens that they own', async function () {
     const [owner, recipient] = await ethers.getSigners();
     contract.grantRole(
       '0x4d494e5445525f524f4c45000000000000000000000000000000000000000000',
@@ -77,7 +77,7 @@ describe('MyERC721', function () {
     expect(await contract.crafted(5)).to.equal(false);
   });
 
-  it('Vote on crafted tokens', async function () {
+  it('Allows token owners to vote on crafted tokens', async function () {
     const [owner, recipient] = await ethers.getSigners();
     contract.grantRole(
       '0x4d494e5445525f524f4c45000000000000000000000000000000000000000000',
