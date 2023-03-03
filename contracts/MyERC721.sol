@@ -33,7 +33,10 @@ contract MyERC721 is ImmutableERC721Preset, IERC721Swappable {
     ) internal view override {
         // By default only allow minter to all the swap functions
         // Can be overridden with more custom functionality
-        require(hasRole("MINTER", msg.sender), "Caller must be current owner");
+        require(
+            hasRole(MINTER_ROLE, msg.sender),
+            "Caller must be current MINTER"
+        );
     }
 
     function _burnAll(uint[] memory ids, address requiredOwner) internal {
