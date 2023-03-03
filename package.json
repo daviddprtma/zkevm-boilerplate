@@ -7,7 +7,8 @@
     "clean": "npx hardhat clean",
     "test": "npx hardhat test",
     "compile": "npx hardhat compile",
-    "deploy:goerli": "npx hardhat run scripts/deploy.ts --network goerli"
+    "deploy:goerli": "npx hardhat run scripts/deploy.ts --network localhost",
+    "swap": "npx hardhat run scripts/mint.ts --network localhost"
   },
   "author": "Immutable",
   "license": "Apache-2.0",
