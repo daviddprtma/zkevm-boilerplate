@@ -1,5 +1,5 @@
 import { ethers } from "hardhat";
-import { MyERC721, MyERC721__factory } from "../typechain-types";
+import {OF721, OF721__factory, TrustedContractRegistry, TrustedContractRegistry__factory} from "../typechain-types";
 
 async function deploy() {
   // get deployer
@@ -13,19 +13,29 @@ async function deploy() {
   );
 
   // deploy MyERC721 contract
-  const MyERC721: MyERC721__factory = await ethers.getContractFactory(
-    "MyERC721"
+  const OF721: OF721__factory = await ethers.getContractFactory(
+    "OF721"
   );
-  const contract: MyERC721 = await MyERC721.connect(deployer).deploy(
+  const TrustedContractRegistry: TrustedContractRegistry__factory = await ethers.getContractFactory(
+      "TrustedContractRegistry"
+  );
+
+  const contractRegistry: TrustedContractRegistry = await TrustedContractRegistry.connect(deployer).deploy(deployer.address);
+
+  const contract: OF721 = await OF721.connect(deployer).deploy(
     deployer.address, // owner
     "Imaginary Immutable Iguanas", // name
     "III", // symbol
     "https://example-base-uri.com/", // baseURI
-    "https://example-contract-uri.com/" // contractURI
+    "https://example-contract-uri.com/", // contractURI
+    contractRegistry.address
   );
+
   await contract.deployed();
+  await contractRegistry.deployed();
 
   // log deployed contract address
+  console.log(`TrustedContractRegistry contract deployed to ${contractRegistry.address}`);
   console.log(`MyERC721 contract deployed to ${contract.address}`);
 }
 
