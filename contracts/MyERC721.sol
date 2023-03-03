@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./1_ImmutableERC721Preset.sol";
+import "./ImmutableERC721Preset.sol";
 
 contract MyRoubbler is ImmutableERC721Preset {
     mapping(uint256 => uint8) public strength;
@@ -39,21 +39,41 @@ contract MyRoubbler is ImmutableERC721Preset {
 
         // random
         if (randomNumber() % 100 <= 49) {
-            grow(tokenId);
+            grow(tokenId, 1);
             return true;
         } else {
-            shrink(tokenId);
+            shrink(tokenId, 1);
             return false;
         }
     }
 
-    function grow(uint256 tokenId) internal {
-        strength[tokenId] ++;
+    function attack(uint256 attackerTokenID, uint256 defenderTokenID) external returns (bool) {
+        require(_isApprovedOrOwner(msg.sender, attackerTokenID), "Need to own the Roubbler");
+
+        // logic for deciding the battle winner
+        uint256 attackerStrength = strength[attackerTokenID];
+        uint256 defenderStrength = strength[defenderTokenID];
+
+        if ((randomNumber() % 10) + (attackerStrength - defenderStrength) >= 5) {
+            // attacker wins
+            grow(attackerTokenID, 1);
+            shrink(defenderTokenID, 1);
+            return true;
+        } else {
+            // defender wins
+            grow(defenderTokenID, 1);
+            shrink(attackerTokenID, 2);
+            return false;
+        }
     }
 
-    function shrink(uint256 tokenId) internal {
-        strength[tokenId] --;
-        if (strength[tokenId] == 0) {
+    function grow(uint256 tokenId, uint8 amount) internal {
+        strength[tokenId] = strength[tokenId] + amount;
+    }
+
+    function shrink(uint256 tokenId, uint8 amount) internal {
+        strength[tokenId] = strength[tokenId] - amount;
+        if (strength[tokenId] <= 0) {
             _burn(tokenId);
         }
     }
@@ -61,7 +81,7 @@ contract MyRoubbler is ImmutableERC721Preset {
     function vipGrow(uint256 tokenId) external payable {
         require(msg.value >= VIP_PRICE, "VIP Grow price is 0.01 eth");
         payable(_owner).transfer(msg.value);
-        grow(tokenId);
+        grow(tokenId, 1);
     }
 
     // Randomness provided by this is predicatable. Use with care!
