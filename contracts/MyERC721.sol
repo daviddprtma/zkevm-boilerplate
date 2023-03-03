@@ -4,9 +4,9 @@ pragma solidity ^0.8.0;
 import "@imtbl/zkevm-contracts/contracts/token/erc721/ImmutableERC721Preset.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import "./IERC721Swappable.sol";
+import "./IERC721Swapable.sol";
 
-contract MyERC721 is ImmutableERC721Preset, IERC721Swappable {
+contract MyERC721 is ImmutableERC721Preset, IERC721Swapable {
     constructor(
         address owner,
         string memory name,

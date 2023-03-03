@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract IERC721Swappable {
+contract IERC721Swapable {
     address public swapToken;
     event SwapForNFT(uint[] ids, uint forNFT, address to);
     event SwapForToken(uint[] ids, uint amount, address to);
