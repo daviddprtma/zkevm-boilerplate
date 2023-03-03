@@ -6,6 +6,7 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
+console.log(process.env.GOERLI_URL)
 const config: HardhatUserConfig = {
   solidity: "0.8.17",
   networks: {

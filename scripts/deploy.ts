@@ -1,5 +1,5 @@
 import { ethers } from "hardhat";
-import { MyERC721, MyERC721__factory } from "../typechain-types";
+import { MyRoubbler ,MyRoubbler__factory } from "../typechain-types";
 
 async function deploy() {
   // get deployer
@@ -13,12 +13,12 @@ async function deploy() {
   );
 
   // deploy MyERC721 contract
-  const MyERC721: MyERC721__factory = await ethers.getContractFactory(
-    "MyERC721"
+  const MyERC721: MyRoubbler__factory = await ethers.getContractFactory(
+    "MyRoubbler"
   );
-  const contract: MyERC721 = await MyERC721.connect(deployer).deploy(
+  const contract: MyRoubbler = await MyERC721.connect(deployer).deploy(
     deployer.address, // owner
-    "Imaginary Immutable Iguanas", // name
+    "Roubbler", // name
     "III", // symbol
     "https://example-base-uri.com/", // baseURI
     "https://example-contract-uri.com/" // contractURI
@@ -26,7 +26,7 @@ async function deploy() {
   await contract.deployed();
 
   // log deployed contract address
-  console.log(`MyERC721 contract deployed to ${contract.address}`);
+  console.log(`MyRoubbler contract deployed to ${contract.address}`);
 }
 
 deploy().catch((error) => {
