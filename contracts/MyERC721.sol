@@ -60,6 +60,7 @@ contract MyERC721 is ImmutableERC721Preset, IERC721Swappable {
         // Transfer `amount` to the owner of the NFTs
         IERC20 token = IERC20(swapToken);
         token.transfer(to, amount);
+        emit SwapForToken(ids, amount, to);
     }
 
     function swapForNFT(
@@ -72,5 +73,6 @@ contract MyERC721 is ImmutableERC721Preset, IERC721Swappable {
 
         // Mint token to burner
         _mint(to, forNFT);
+        emit SwapForNFT(ids, forNFT, to);
     }
 }
