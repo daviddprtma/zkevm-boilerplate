@@ -7,7 +7,9 @@
     "clean": "npx hardhat clean",
     "test": "npx hardhat test",
     "compile": "npx hardhat compile",
-    "deploy:goerli": "npx hardhat run scripts/deploy.ts --network goerli"
+    "deploy:goerli": "npx hardhat run scripts/deploy.ts --network goerli",
+    "deploy:nft:evm": "npx hardhat run scripts/deployNFT.ts --network immutableZkevmTestnet",
+    "deploy:token:evm": "npx hardhat run scripts/deployToken.ts --network immutableZkevmTestnet"
   },
   "author": "Immutable",
   "license": "MIT",
