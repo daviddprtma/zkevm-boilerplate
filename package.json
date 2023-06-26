@@ -8,9 +8,10 @@
     "test": "npx hardhat test",
     "compile": "npx hardhat compile",
     "deploy:goerli": "npx hardhat run scripts/deploy.ts --network goerli",
-    "deploy:nft:evm": "npx hardhat run scripts/deployNFT.ts",
-    "mint:nft:evm": "npx hardhat run scripts/mintNFT.ts",
-    "deploy:token:evm": "npx hardhat run scripts/deployToken.ts"
+    "deploy:nft:evm": "npx hardhat run scripts/deployNFT.ts --network immutableZkevmTestnet",
+    "mint:nft:evm": "npx hardhat run scripts/mintNFT.ts --network immutableZkevmTestnet",
+    "transfer:nft:evm": "npx hardhat run scripts/transferNFT.ts --network immutableZkevmTestnet",
+    "deploy:token:evm": "npx hardhat run scripts/deployToken.ts --network immutableZkevmTestnet"
   },
   "author": "Immutable",
   "license": "MIT",
