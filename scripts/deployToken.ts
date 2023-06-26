@@ -15,7 +15,7 @@ async function deploy() {
   // deploy MyERC20 contract
   const MyERC20: MyERC20__factory = await ethers.getContractFactory('MyERC20');
   const contract: MyERC20 = await MyERC20.connect(deployer).deploy(
-    'token-aa-devnet', // name
+    'token-aa-testnet', // name
     'AA', // symbol
   );
   await contract.deployed();

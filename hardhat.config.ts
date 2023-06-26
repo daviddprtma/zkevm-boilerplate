@@ -1,20 +1,24 @@
-import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox";
-import "@typechain/hardhat";
+import { HardhatUserConfig } from 'hardhat/config';
+import '@nomicfoundation/hardhat-toolbox';
+import '@typechain/hardhat';
 
-import * as dotenv from "dotenv";
+import * as dotenv from 'dotenv';
 
 dotenv.config();
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.17",
+  solidity: '0.8.17',
   networks: {
     goerli: {
-      url: process.env.GOERLI_URL || "",
+      url: process.env.GOERLI_URL || '',
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
     },
-    immutableZkevmTestnet: {
-      url: process.env.IMMUTABLE_ZKEVM_URL || "",
+    devnet: {
+      url: process.env.IMMUTABLE_ZKEVM_DEVNET_URL || '',
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+    },
+    testnet: {
+      url: process.env.IMMUTABLE_ZKEVM_TESTNET_URL || '',
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
     },
   },
