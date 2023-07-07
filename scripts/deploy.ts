@@ -18,10 +18,10 @@ async function deploy() {
   );
   const contract: MyERC721 = await MyERC721.connect(deployer).deploy(
     deployer.address, // owner
-    "Imaginary Immutable Animals", // name
-    "IIA", // symbol
-    "https://yellow-direct-caterpillar-996.mypinata.cloud/ipfs/QmWJHxUEG5HfVmCqKf5uzuEaLeXA8TrKh6osQAjwAYe8SR/nft-metadata/", // baseURI
-    "https://yellow-direct-caterpillar-996.mypinata.cloud/ipfs/QmWJHxUEG5HfVmCqKf5uzuEaLeXA8TrKh6osQAjwAYe8SR/contract-metadata/contract.json", // contractURI
+    "Imaginary Immutable Iguanas", // name
+    "III", // symbol
+    "https://example-base-uri.com/", // baseURI
+    "https://example-contract-uri.com/", // contractURI
     deployer.address, // royalty recipient
     ethers.BigNumber.from("2000"), // fee numerator
   );
