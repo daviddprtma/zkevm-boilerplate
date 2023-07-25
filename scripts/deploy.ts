@@ -18,7 +18,7 @@ async function deploy() {
   );
   const contract: MyERC721 = await MyERC721.connect(deployer).deploy(
     deployer.address, // owner
-    "Imaginary Immutable Iguanas", // name
+    "Imaginary Immutable Iguanas 17.07.2023", // name
     "III", // symbol
     "https://example-base-uri.com/", // baseURI
     "https://example-contract-uri.com/", // contractURI
