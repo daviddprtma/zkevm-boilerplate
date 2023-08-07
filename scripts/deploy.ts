@@ -23,6 +23,7 @@ async function deploy() {
     "https://example-base-uri.com/", // baseURI
     "https://example-contract-uri.com/", // contractURI
     deployer.address, // royalty recipient
+    0, // royalty allowlist (0 does no allowlist checking)
     ethers.BigNumber.from("2000"), // fee numerator
   );
   await contract.deployed();
