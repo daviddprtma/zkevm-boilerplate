@@ -10,6 +10,7 @@ contract MyERC721 is ImmutableERC721PermissionedMintable {
         string memory symbol,
         string memory baseURI,
         string memory contractURI,
+        address royaltyAllowlist,
         address receiver, 
         uint96 feeNumerator
 
@@ -20,6 +21,7 @@ contract MyERC721 is ImmutableERC721PermissionedMintable {
             symbol,
             baseURI,
             contractURI,
+            royaltyAllowlist,
             receiver,
             feeNumerator
         )
