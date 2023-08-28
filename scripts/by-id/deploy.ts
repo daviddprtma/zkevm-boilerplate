@@ -1,5 +1,5 @@
 import { ethers } from "hardhat";
-import { MyERC721, MyERC721__factory } from "../typechain-types";
+import { MyERC721MintByID, MyERC721MintByID__factory } from "../../typechain-types";
 
 async function deploy() {
   // get deployer
@@ -18,10 +18,10 @@ async function deploy() {
   }
 
   // deploy MyERC721 contract
-  const factory: MyERC721__factory = await ethers.getContractFactory(
-    "MyERC721"
+  const factory: MyERC721MintByID__factory = await ethers.getContractFactory(
+    "MyERC721MintByID"
   );
-  const contract: MyERC721 = await factory.connect(deployer).deploy(
+  const contract: MyERC721MintByID = await factory.connect(deployer).deploy(
     deployer.address, // owner
     "Imaginary Immutable Iguanas", // name
     "III", // symbol
@@ -34,7 +34,7 @@ async function deploy() {
   await contract.deployed();
 
   // log deployed contract address
-  console.log(`MyERC721 contract deployed to ${contract.address}`);
+  console.log(`MyERC721MintByID contract deployed to ${contract.address}`);
 }
 
 deploy().catch((error) => {

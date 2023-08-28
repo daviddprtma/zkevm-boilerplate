@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@imtbl/zkevm-contracts/contracts/token/erc721/preset/ImmutableERC721.sol";
+import "@imtbl/zkevm-contracts/contracts/token/erc721/preset/ImmutableERC721MintByID.sol";
 
-contract MyERC721 is ImmutableERC721 {
+contract MyERC721MintByID is ImmutableERC721MintByID {
     constructor(
         address owner,
         string memory name,
@@ -15,7 +15,7 @@ contract MyERC721 is ImmutableERC721 {
         uint96 feeNumerator
 
     )
-        ImmutableERC721(
+        ImmutableERC721MintByID(
             owner,
             name,
             symbol,
