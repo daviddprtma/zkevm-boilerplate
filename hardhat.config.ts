@@ -18,9 +18,7 @@ const config: HardhatUserConfig = {
     },
   },
   dependencyCompiler: {
-    paths: [
-      '@imtbl/zkevm-contracts/contracts/royalty-enforcement/RoyaltyAllowlist.sol',
-    ],
+    paths: ["@imtbl/zkevm-contracts/contracts/allowlist/OperatorAllowlist.sol"],
   },
   networks: {
     hardhat: {
@@ -28,8 +26,7 @@ const config: HardhatUserConfig = {
     },
     immutableZkevmTestnet: {
       url: "https://rpc.testnet.immutable.com",
-      accounts:
-        process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
       allowUnlimitedContractSize: true,
     },
   },

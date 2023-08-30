@@ -12,9 +12,9 @@ async function deploy() {
     ethers.utils.formatEther(await deployer.getBalance())
   );
 
-  const royaltyAllowlist = process.env.ROYALTY_ALLOWLIST;
-  if (royaltyAllowlist === undefined) {
-    throw new Error("Please set your ROYALTY_ALLOWLIST in a .env file");
+  const operatorAllowlist = process.env.OPERATOR_ALLOWLIST;
+  if (operatorAllowlist === undefined) {
+    throw new Error("Please set your OPERATOR_ALLOWLIST in a .env file");
   }
 
   // deploy MyERC721 contract
@@ -27,9 +27,9 @@ async function deploy() {
     "III", // symbol
     "https://example-base-uri.com/", // baseURI
     "https://example-contract-uri.com/", // contractURI
-    royaltyAllowlist, // royalty allowlist
+    operatorAllowlist, // operator allowlist
     deployer.address, // royalty recipient
-    ethers.BigNumber.from("2000"), // fee numerator
+    ethers.BigNumber.from("2000") // fee numerator
   );
   await contract.deployed();
 
