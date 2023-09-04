@@ -11,9 +11,9 @@ For more information and guides, please refer to our [smart contract developer d
 Fork this repository and clone it to your local machine.
 See the [Github docs](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) for a guide to forking a repository.
 
-Run `npm install` to install the required dependencies.
+Run `yarn` to install the required dependencies.
 
-There are a few pre-defined npm scripts that you can run to compile, test, and deploy your contracts:
+There are a few pre-defined scripts that you can run to compile, test, and deploy your contracts:
 
 ```
 "scripts": {
